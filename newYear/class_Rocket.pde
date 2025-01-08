@@ -1,4 +1,4 @@
-class Rocket {
+class Rocket{
   // attributter
   int diameter = 5; // diameter
 
@@ -81,7 +81,11 @@ class MyRocket extends Rocket{
     @Override
   void explode() {
     // Tilføj eventuelle yderligere eksplosionseffekter her
-    fill(255, 0, 0, alfa);
+  diameter+=1;
+  alfa-=1;
+    fill(r, g, b, alfa);
     ellipse(pos.x, pos.y, diameter * 2, diameter * 2);
-  }
+    noStroke()
+    
+  ;  }
 }
