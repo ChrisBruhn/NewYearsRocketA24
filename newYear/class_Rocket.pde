@@ -81,7 +81,10 @@ class MyRocket extends Rocket{
     @Override
   void explode() {
     // Tilføj eventuelle yderligere eksplosionseffekter her
-    fill(255, 0, 0, alfa);
+    fill(r, g, b, alfa);
     ellipse(pos.x, pos.y, diameter * 2, diameter * 2);
+    diameter++;
+    alfa--;
+    noStroke();
   }
 }
