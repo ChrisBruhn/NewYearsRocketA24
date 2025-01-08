@@ -5,7 +5,7 @@ SoundFile multiRocket;
 SoundFile singleRocket;
 
 
-int listSize = 20;
+int listSize = 30;
 Rocket[] rocketBattery = new Rocket[listSize];
 
 
@@ -14,8 +14,11 @@ void setup() {
   size(1200, 800);
   background (0);
   for (int i =0; i<rocketBattery.length; i++) {
-    rocketBattery[i] = new Rocket();
+    rocketBattery[i] = new MyRocket();
   }
+   for (int i =0; i<rocketBattery.length; i++) {
+    rocketBattery[i] = new noah3473();
+   }
   
   fireRocket = new SoundFile(this, "start.mp3");
   multiRocket = new SoundFile(this, "multiRaket.mp3");

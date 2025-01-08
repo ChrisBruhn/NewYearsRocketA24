@@ -81,7 +81,19 @@ class MyRocket extends Rocket{
     @Override
   void explode() {
     // Tilføj eventuelle yderligere eksplosionseffekter her
-    fill(255, 0, 0, alfa);
+    fill(r, g, b, alfa); // tilføjer farve
     ellipse(pos.x, pos.y, diameter * 2, diameter * 2);
+    noStroke(); // fjerner outline
+    diameter++; // inkrementerer diameter (vokser diameter)
+    alfa--; // dekrementerer alfa (fjerner farve)
   }
+}
+class noah3473 extends Rocket{
+ @Override
+ void explode() {
+  fill(r,g,b,alfa);
+  triangle(random(pos.x),random(pos.y),random(pos.x),random(pos.y),random(pos.x),random(pos.y));
+  noStroke();
+  alfa--;
+ }
 }
