@@ -89,3 +89,53 @@ class MyRocket extends Rocket{
     
   ;  }
 }
+/**********************************************/
+
+class Marc755c extends Rocket {
+  // Attributter til stjerneeffekt
+  int numStars = 10; // Antal stjerner i eksplosionen
+  float[] starSizes = new float[numStars];
+  PVector[] starPositions = new PVector[numStars];
+  
+  Marc755c() {
+    // Initialiser tilfældige stjernestørrelser og positioner relativt til rakettens position
+    for (int i = 0; i < numStars; i++) {
+      starSizes[i] = random(5, 15);
+      float angle = random(TWO_PI);
+      float radius = random(10, 50);
+      starPositions[i] = new PVector(cos(angle) * radius, sin(angle) * radius);
+    }
+  }
+
+  @Override
+  void explode() {
+    // Eksplosionslogik for stjerner
+    for (int i = 0; i < numStars; i++) {
+      float expansionSpeed = random(0.1, 1.5);
+      starPositions[i].x *= 1 + expansionSpeed * 0.01;
+      starPositions[i].y *= 1 + expansionSpeed * 0.01;
+
+      // Tegn hver stjerne
+      float starX = pos.x + starPositions[i].x;
+      float starY = pos.y + starPositions[i].y;
+
+      fill(r, g, b, alfa);
+      noStroke();
+      beginShape();
+      for (int j = 0; j < 5; j++) {
+        float angle = radians(j * 72);
+        float x = cos(angle) * starSizes[i] + starX;
+        float y = sin(angle) * starSizes[i] + starY;
+        vertex(x, y);
+        angle += radians(36);
+        x = cos(angle) * (starSizes[i] / 2) + starX;
+        y = sin(angle) * (starSizes[i] / 2) + starY;
+        vertex(x, y);
+      }
+      endShape(CLOSE);
+    }
+    
+    // Reducer alfa for fade-out effekt
+    alfa -= 1;
+  }
+}
