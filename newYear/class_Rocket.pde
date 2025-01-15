@@ -77,11 +77,18 @@ class Rocket {
 
 /**********************************************/
 
-class MyRocket extends Rocket{
+class tore0499 extends Rocket {
     @Override
-  void explode() {
-    // Tilføj eventuelle yderligere eksplosionseffekter her
-    fill(255, 0, 0, alfa);
-    ellipse(pos.x, pos.y, diameter * 2, diameter * 2);
-  }
+    void explode() {
+        pushMatrix();
+        translate(pos.x, pos.y);
+        rotate(frameCount * 0.05);
+        fill(r, g, b, alfa);
+        rectMode(CENTER);
+        rect(0, 0, diameter * 2, diameter * 2);
+        popMatrix();
+        diameter++;
+        alfa--;
+        noStroke();
+    }
 }
